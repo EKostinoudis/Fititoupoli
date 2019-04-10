@@ -5,7 +5,7 @@
 // Constructor of Space
 Space::Space() {}
 
-// Setter functions
+// Setters
 void Space::setId(int newId) {
     id = newId;
 }
@@ -37,9 +37,9 @@ void Space::setBuyingCost(int newBuyCost) {
 void Space::setOwner(int newOwner) {
     owner = newOwner;
 }
-// End of setter functions
+// End of setters
 
-// Getter functions
+// Getters
 int Space::getId() {
     return id;
 }
@@ -71,4 +71,4 @@ int Space::getBuyingCost() {
 int Space::getOwner() {
     return owner;
 }
-// End of getter functions
+// End of getters

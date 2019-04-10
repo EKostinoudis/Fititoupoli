@@ -23,7 +23,7 @@ Player::Player(int playerId) {
     }
 }
 
-// Getter functions
+// Getters
 int Player::getId() {
     return id;
 }
@@ -41,7 +41,7 @@ string Player::getName() {
 }
 // End of getters
 
-// Setter function for location
+// Setter for location
 void Player::setLocation(int spaceNum) {
     location = spaceNum;
 }

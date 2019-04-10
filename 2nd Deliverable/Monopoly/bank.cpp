@@ -6,7 +6,7 @@ Bank::Bank() {
     freeParkMoney = 0;
 }
 
-// Getter functions
+// Getters
 int Bank::getMoney() {
     return money;
 }
