@@ -90,4 +90,52 @@ void Property::addHouse() {
 /* End of Property class */
 
 
-// TODO: Implement here the methods of RailRoad, Utility, and Tax
+/* RailRoad class */
+// Constructor of RailRoad
+RailRoad::RailRoad(int id, string name, SpaceType type, string actionText, int buyCost) : Space(id, name, type, actionText) {
+    this->buyCost = buyCost;
+}
+
+// rent setter
+void RailRoad::setRent(int numberOfRailRoads, int inputRent) {
+    rent[numberOfRailRoads - 1] = inputRent;
+}
+
+// buyCost getter
+int RailRoad::getBuyingCost() {
+    return buyCost;
+}
+
+int RailRoad::getRent() {
+    return rent[owner->getNumberOfRailRoadsOwned() - 1];
+}
+/* End of RailRoad class */
+
+
+/* Utility class */
+// Constructor of Utility
+Utility::Utility(int id, string name, SpaceType type, string actionText, int buyCost, Dice* dice)
+  : Space(id, name, type, actionText) {
+    this->buyCost = buyCost;
+    this->dice = dice;
+}
+
+// rentMultiplier setter
+void Utility::setRentMultiplier(int numberOfUtilities, int inputRentMultiplier) {
+   rentMultiplier[numberOfUtilities - 1] = inputRentMultiplier;
+}
+
+// buyCost getter
+int Utility::getBuyingCost() {
+    return buyCost;
+}
+
+int Utility::getRent() {
+    return rentMultiplier[owner->getNumberOfUtilitiesOwned() - 1] * (dice->getFirstDice() + dice->getSecondDice());
+}
+/* End of Utility class */
+
+
+/* Tax class */
+
+/* End of Tax class */
