@@ -36,7 +36,10 @@ bool Space::typeIs(SpaceType type) {
 }
 
 bool Space::ownerIs(Player* player) {
-    return player->getName() == owner->getName();
+    if(owner != NULL) {
+        return player->getName() == owner->getName();
+    }
+    return false;
 }
 /* End of Space class */
 
@@ -137,5 +140,13 @@ int Utility::getRent() {
 
 
 /* Tax class */
+// Constructor of Tax
+Tax::Tax(int id, string name, SpaceType type, string actionText, int tax) : Space(id, name, type, actionText) {
+    this->tax = tax;
+}
 
+// tax getter
+int Tax::getTax() {
+    return tax;
+}
 /* End of Tax class */
