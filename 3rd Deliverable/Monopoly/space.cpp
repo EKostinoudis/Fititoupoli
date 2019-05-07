@@ -36,10 +36,18 @@ bool Space::typeIs(SpaceType type) {
 }
 
 bool Space::ownerIs(Player* player) {
-    if(owner != NULL) {
-        return player->getName() == owner->getName();
+    // Check if there is no owner
+    if(owner == NULL) {
+        if(player == NULL) {
+            return true;
+        }
+        return false;
     }
-    return false;
+    // Check NULL player
+    if(player == NULL) {
+        return false;
+    }
+    return player->getName() == owner->getName();
 }
 /* End of Space class */
 
@@ -83,12 +91,7 @@ int Property::getRent() {
 }
 
 void Property::addHouse() {
-    if(numberOfHouses < 5) {
-        numberOfHouses++;
-    }
-    else {
-        std::cout << "Can't have more that 5 houses." << std::endl;
-    }
+    numberOfHouses++;
 }
 /* End of Property class */
 
@@ -101,7 +104,7 @@ RailRoad::RailRoad(int id, string name, SpaceType type, string actionText, int b
 
 // rent setter
 void RailRoad::setRent(int numberOfRailRoads, int inputRent) {
-    rent[numberOfRailRoads - 1] = inputRent;
+    rent[numberOfRailRoads] = inputRent;
 }
 
 // buyCost getter
@@ -125,7 +128,7 @@ Utility::Utility(int id, string name, SpaceType type, string actionText, int buy
 
 // rentMultiplier setter
 void Utility::setRentMultiplier(int numberOfUtilities, int inputRentMultiplier) {
-   rentMultiplier[numberOfUtilities - 1] = inputRentMultiplier;
+    rentMultiplier[numberOfUtilities] = inputRentMultiplier;
 }
 
 // buyCost getter

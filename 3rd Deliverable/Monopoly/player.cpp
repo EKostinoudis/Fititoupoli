@@ -110,30 +110,63 @@ int Player::decideUpgrade()
 
 bool Player::canBuy(Property* property)
 {
-    // TODO: Implement this method
+    if(property->ownerIs(NULL)) {
+        if(property->getBuyingCost() <= money) {
+            return true;
+        }
+    }
+    return false;
 }
 
 bool Player::canBuy(RailRoad* railroad)
 {
-    // TODO: Implement this method
+    if(railroad->ownerIs(NULL)) {
+        if(railroad->getBuyingCost() <= money) {
+            return true;
+        }
+    }
+    return false;
 }
 
 bool Player::canBuy(Utility* utility)
 {
-    // TODO: Implement this method
+    if(utility->ownerIs(NULL)) {
+        if(utility->getBuyingCost() <= money) {
+            return true;
+        }
+    }
+    return false;
 }
 
 bool Player::canUpgrade(Property* property)
 {
-    // TODO: Implement this method
+    if(property->ownerIs(this) && money >= property->getUpgradeCost() && property->getNumberOfHouses() < 5) {
+        // Check if player owns all properties with the same color
+        bool ownsAll = true;
+        PropertyCategory category = property->getCategory();
+
+        for(int i = 0; i < 40; i++) {
+            if(spaces[i]->typeIs(PropertyType)) {
+                if(((Property*)spaces[i])->getCategory() == category) {
+                    if(!ownsProperty(spaces[i])) {
+                        ownsAll = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return ownsAll;
+    }
+
+    return false;
 }
 
 void Player::buy(Space* space)
 {
-    // TODO: Implement this method
+    space->setOwner(this);
 }
 
 void Player::upgrade(Property* space)
 {
-    // TODO: Implement this method
+    space->addHouse();
 }
