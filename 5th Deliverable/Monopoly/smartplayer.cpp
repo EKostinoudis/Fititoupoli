@@ -20,21 +20,21 @@ int SmartPlayer::decideUpgrade()
 {
     int i;
 
-    if(getMoney() >= 400 && spaces[opponent->getLocation() + 7]->typeIs(PropertyType) && canUpgrade((Property*)spaces[opponent->getLocation() + 7]))
-        return opponent->getLocation() + 7;
+    if(getMoney() >= 800 && spaces[(opponent->getLocation() + 7) % 40]->typeIs(PropertyType) && canUpgrade((Property*)spaces[(opponent->getLocation() + 7) % 40]))
+        return (opponent->getLocation() + 7) % 40;
 
     for(i=4; i<=9; i++) {
-        if(getMoney() >= 600 && spaces[opponent->getLocation() + i]->typeIs(PropertyType) && canUpgrade((Property*)spaces[opponent->getLocation() + i]))
-            return opponent->getLocation() + i;
+        if(getMoney() >= 1200 && spaces[(opponent->getLocation() + i) % 40]->typeIs(PropertyType) && canUpgrade((Property*)spaces[(opponent->getLocation() + i) % 40]))
+            return (opponent->getLocation() + i) % 40;
     }
 
     for(i=2; i<=12; i++) {
-        if(getMoney() >= 900 && spaces[opponent->getLocation() + i]->typeIs(PropertyType) && canUpgrade((Property*)spaces[opponent->getLocation() + i]))
-            return opponent->getLocation() + i;
+        if(getMoney() >= 1500 && spaces[(opponent->getLocation() + i) % 40]->typeIs(PropertyType) && canUpgrade((Property*)spaces[(opponent->getLocation() + i) % 40]))
+            return (opponent->getLocation() + i) % 40;
     }
 
     for(i=1; i<40; i++) {
-        if(getMoney() >= 2000 && spaces[i]->typeIs(PropertyType) && canUpgrade((Property*)spaces[i]))
+        if(getMoney() >= 2500 && spaces[i]->typeIs(PropertyType) && canUpgrade((Property*)spaces[i]))
             return i;
     }
 
